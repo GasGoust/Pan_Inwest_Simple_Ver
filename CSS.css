@@ -1,0 +1,120 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;/*По центру сайта*/
+    background-color: rgb(196, 219, 238);
+}
+
+.container{
+    margin-left: 50%;
+max-width: 950px;/*По ширине картинки*/
+max-height: 800px;
+width: 95%; /*Чтобы был отступ справой стороны*/
+}
+.slider-wrapper{
+    position: relative;/*Для того чтобы кнопки были над слоями*/
+}
+
+/*Кнопки <-|->*/
+.slider-wrapper .slide-button{
+width: 50px;
+height: 350px;
+color: rgb(255, 255, 255);
+background-color: rgb(97, 138, 250);
+border-radius: 40px;
+border: none;
+outline: none;
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+font-size: 0px;
+}
+.slider-wrapper .slide-button:hover{
+    background-color: rgb(245, 223, 213);
+    transition: 0.1s;
+    border: 0px solid rgb(255, 221, 148);
+}
+/*Обращение к Left*/
+.slider-wrapper .slide-button#Prev-slide{
+    left: 40px;
+    display: none; /*После скролла напрво - кнопка Left исчезает*/
+}
+/*Обращение к Right*/
+.slider-wrapper .slide-button#Next-slide{
+    right: -60px;
+}
+
+.slider-wrapper .image-list{
+    box-shadow: black 0px 12px 34px;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(61, 1fr); /*img-61 шт*/
+    /**/
+    margin-bottom: 30px;
+    font-family: 0;
+    overflow-x: auto;
+    margin-left: 100px;
+    scrollbar-width: none;
+}
+.slider-wrapper .image-list::-webkit-scrollbar{
+    display: none;
+}
+
+.slider-wrapper .image-list .image-item{
+    width: 800px;
+    height: 800px;
+    object-fit: cover;
+}
+
+/*Нижний скролл*/
+.container .slider-scrollbar{
+    width: 100%;
+    height: 24px;
+    margin-left: 50px;
+    display: flex;
+    align-items: center;
+}
+/*Пространство скролла*/
+.slider-scrollbar .scrollbar-track{
+    height: 2px;
+    width: 100%;
+    background: antiquewhite;
+    position: relative;
+    border-radius: 4px;
+}
+
+/*Скролл увеличивается в высоту*/
+.slider-scrollbar:hover .scrollbar-track{
+    height: 10px;
+}
+/*Сам скролл*/
+.slider-scrollbar .scrollbar-thumb{
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    background: black;
+    border-radius: inherit;
+    cursor: grab;
+}
+/*Хват скролла*/
+.slider-scrollbar .scrollbar-thumb:active{
+    cursor: grabbing;
+    height: 8px;
+    top: -2px;
+    background-color: burlywood;
+    transition: 0.1s;
+}
+.slider-scrollbar .scrollbar-thumb::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -10px;
+    bottom: -10px;
+}
